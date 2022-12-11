@@ -60,7 +60,9 @@ class SearchController extends AbstractController
             $pvObj = $pointVenteRepository->find($pv);
             $invs = $inventoryRepository->findVisitsByPv($pvObj,$du,$au);
         }
-        dd($invs);
-        return new Response('Hi results', 200);
+        //dd($invs);
+        return $this->render('results/index.html.twig', [
+            'invs' => $invs,
+        ]);
     }
 }
