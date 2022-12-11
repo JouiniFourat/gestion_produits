@@ -15,7 +15,7 @@
 <div class="example-wrapper">
     <h1>Hello Search! ✅</h1>
     <form id="search_form" name="search_form" method="post" action="{{ path('app_results') }}">
-    <select id="client" name="client" onChange="getPointVente();">
+    <select id="client" name="client" onChange="getPointVente();" required="required">
     <option value=""> Choisir un client </option>
     {% for client in clients %}
         <option value="{{ client.id }}"> {{ client.fullname }} </option>
@@ -23,8 +23,8 @@
     </select>
     <select id="point_vente" name="point_vente">
     </select>
-    <input type="date" id="date_du" name="date_du"/>
-    <input type="date" id="date_au" name="date_au"/>
+    <input type="date" id="date_du" name="date_du" required="required"/>
+    <input type="date" id="date_au" name="date_au" required="required"/>
     <input type="submit" id="submit_btn" name="submit_btn" value="Search"/>
     </form>
 </div>

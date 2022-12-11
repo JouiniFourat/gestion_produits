@@ -1,5 +1,4 @@
 function getPointVente(){
-    let pvs = "";
     let client = $("#client").val();
     $.ajax({
         url: "/pvs",
@@ -7,9 +6,16 @@ function getPointVente(){
         data: { 
           clientid: client
         },
-        success: function(response) {
-          //Do Something
-          console.log(response)
+        success: function(data) {
+          //create the option items
+          let obj = JSON.parse(data['resp']);
+          let pvs = "";
+          pvs += "<option value=''>Toutes les points de vente</option>";          
+          for (let pv of obj){
+            console.log(pv);
+            pvs += "<option value='"+pv['id']+"'>"+pv["full_name"]+"</option>";
+          }
+          $("#point_vente").html(pvs);
         },
         error: function(xhr) {
           //Do Something to handle error
